@@ -5,19 +5,21 @@ import com.marcinmajkowski.membershipsoftware.shared.FirstName;
 import com.marcinmajkowski.membershipsoftware.shared.Id;
 import com.marcinmajkowski.membershipsoftware.shared.LastName;
 
-class Customer {
+import java.util.Objects;
+
+public class Customer {
 
     private Id id;
     private FirstName firstName;
     private LastName lastName;
 
     Customer(Id id, FirstName firstName, LastName lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.id = Objects.requireNonNull(id);
+        this.firstName = Objects.requireNonNull(firstName);
+        this.lastName = Objects.requireNonNull(lastName);
     }
 
-    Id getId() {
+    public Id getId() {
         return id;
     }
 

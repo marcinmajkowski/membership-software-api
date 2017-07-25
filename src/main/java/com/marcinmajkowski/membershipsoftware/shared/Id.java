@@ -3,6 +3,7 @@ package com.marcinmajkowski.membershipsoftware.shared;
 import java.util.Objects;
 import java.util.UUID;
 
+// TODO fromString, no-arg
 public final class Id {
 
     private final UUID uuid;

@@ -7,7 +7,12 @@ import org.springframework.context.annotation.Configuration;
 class CustomerConfiguration {
 
     @Bean
-    CustomerFacade customerFacade() {
-        return new CustomerFacade(new CustomerCreator(), new InMemoryCustomerRepository());
+    InMemoryCustomerRepository inMemoryCustomerRepository() {
+        return new InMemoryCustomerRepository();
+    }
+
+    @Bean
+    CustomerFacade customerFacade(InMemoryCustomerRepository inMemoryCustomerRepository) {
+        return new CustomerFacade(new CustomerCreator(), inMemoryCustomerRepository);
     }
 }
