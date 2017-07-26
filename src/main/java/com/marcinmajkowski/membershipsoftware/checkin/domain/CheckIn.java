@@ -7,7 +7,8 @@ import com.marcinmajkowski.membershipsoftware.shared.Id;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.Objects;
+
+import static java.util.Objects.requireNonNull;
 
 class CheckIn {
 
@@ -16,9 +17,9 @@ class CheckIn {
     private Customer customer;
 
     CheckIn(Id id, LocalDateTime timestamp, Customer customer) {
-        this.id = Objects.requireNonNull(id);
-        this.timestamp = Objects.requireNonNull(timestamp);
-        this.customer = Objects.requireNonNull(customer);
+        this.id = requireNonNull(id);
+        this.timestamp = requireNonNull(timestamp);
+        this.customer = requireNonNull(customer);
     }
 
     Id getId() {

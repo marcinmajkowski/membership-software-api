@@ -5,7 +5,7 @@ import com.marcinmajkowski.membershipsoftware.shared.FirstName;
 import com.marcinmajkowski.membershipsoftware.shared.Id;
 import com.marcinmajkowski.membershipsoftware.shared.LastName;
 
-import java.util.Objects;
+import static java.util.Objects.requireNonNull;
 
 public class Customer {
 
@@ -14,9 +14,9 @@ public class Customer {
     private LastName lastName;
 
     Customer(Id id, FirstName firstName, LastName lastName) {
-        this.id = Objects.requireNonNull(id);
-        this.firstName = Objects.requireNonNull(firstName);
-        this.lastName = Objects.requireNonNull(lastName);
+        this.id = requireNonNull(id);
+        this.firstName = requireNonNull(firstName);
+        this.lastName = requireNonNull(lastName);
     }
 
     public Id getId() {
