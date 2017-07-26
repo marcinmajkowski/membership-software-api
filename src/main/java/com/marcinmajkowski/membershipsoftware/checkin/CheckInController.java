@@ -2,6 +2,7 @@ package com.marcinmajkowski.membershipsoftware.checkin;
 
 import com.marcinmajkowski.membershipsoftware.checkin.domain.CheckInFacade;
 import com.marcinmajkowski.membershipsoftware.checkin.dto.CheckInDto;
+import com.marcinmajkowski.membershipsoftware.shared.Controllers;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +29,7 @@ class CheckInController {
 
     @PostMapping
     CheckInDto addCheckIn(@PathVariable String customerId, @RequestBody CheckInDto checkInDto) {
-        checkInDto.customerId = customerId;
+        checkInDto.customerId = Controllers.requireEqualOrNull(customerId, checkInDto.customerId);
         return checkInFacade.add(checkInDto);
     }
 }
