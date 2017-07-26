@@ -8,8 +8,6 @@ import com.marcinmajkowski.membershipsoftware.shared.Id;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.UUID.fromString;
-
 public class CheckInFacade {
 
     private final CheckInCreator checkInCreator;
@@ -25,7 +23,7 @@ public class CheckInFacade {
     }
 
     public List<CheckInDto> findAllByCustomerId(String customerId) {
-        Customer customer = customerRepository.findById(new Id(fromString(customerId)));
+        Customer customer = customerRepository.findById(Id.fromString(customerId));
         return checkInRepository.findByCustomer(customer).stream()
                 .map(CheckIn::toDto)
                 // TODO sorted
@@ -39,6 +37,6 @@ public class CheckInFacade {
     }
 
     public CheckInDto findById(String id) {
-        return checkInRepository.findById(new Id(fromString(id))).toDto();
+        return checkInRepository.findById(Id.fromString(id)).toDto();
     }
 }

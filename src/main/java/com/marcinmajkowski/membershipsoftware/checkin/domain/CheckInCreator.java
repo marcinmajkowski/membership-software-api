@@ -10,8 +10,6 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import static java.util.Optional.ofNullable;
-import static java.util.UUID.fromString;
-import static java.util.UUID.randomUUID;
 
 class CheckInCreator {
 
@@ -22,11 +20,11 @@ class CheckInCreator {
     }
 
     CheckIn fromDto(CheckInDto checkInDto) {
-        Id id = new Id(randomUUID());
+        Id id = new Id();
         LocalDateTime timestamp = ofNullable(checkInDto.timestamp)
                 .map(this::localDateTimeFrom)
                 .orElseGet(LocalDateTime::now);
-        Customer customer = customerRepository.findById(new Id(fromString(checkInDto.customerId)));
+        Customer customer = customerRepository.findById(Id.fromString(checkInDto.customerId));
         return new CheckIn(id, timestamp, customer);
     }
 

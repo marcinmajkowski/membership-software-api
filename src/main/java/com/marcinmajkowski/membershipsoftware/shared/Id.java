@@ -1,20 +1,21 @@
 package com.marcinmajkowski.membershipsoftware.shared;
 
-import java.util.Objects;
 import java.util.UUID;
 
-// TODO fromString, no-arg
 public final class Id {
 
     private final UUID uuid;
 
-    public Id(UUID uuid) {
-        Objects.requireNonNull(uuid);
-        this.uuid = uuid;
+    public Id() {
+        this.uuid = UUID.randomUUID();
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public static Id fromString(String s) {
+        return new Id(UUID.fromString(s));
+    }
+
+    private Id(UUID uuid) {
+        this.uuid = uuid;
     }
 
     @Override

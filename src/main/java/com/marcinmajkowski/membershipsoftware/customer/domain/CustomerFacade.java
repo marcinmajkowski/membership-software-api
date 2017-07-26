@@ -4,7 +4,6 @@ import com.marcinmajkowski.membershipsoftware.customer.dto.CustomerDto;
 import com.marcinmajkowski.membershipsoftware.shared.Id;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class CustomerFacade {
@@ -25,7 +24,7 @@ public class CustomerFacade {
     }
 
     public CustomerDto findById(String id) {
-        return customerRepository.findById(new Id(UUID.fromString(id))).toDto();
+        return customerRepository.findById(Id.fromString(id)).toDto();
     }
 
     public CustomerDto add(CustomerDto customerDto) {
